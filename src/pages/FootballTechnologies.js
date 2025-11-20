@@ -1,8 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-<<<<<<< HEAD
 import { trackClick } from '../utils/trackClick'; // Import trackClick
-=======
->>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
 
 // Utility to wait for global JS libraries (like tf, poseDetection)
 const waitForGlobal = (prop, timeout = 10000) =>
@@ -24,13 +21,15 @@ const COLORS = {
   skeleton: "cyan",
 };
 
-export default function FootballTechnologies() {
+export default function FootballTechnologies({ onBackClick }) {
   const [showTechnologies, setShowTechnologies] = useState(false);
   const [showAnalytica, setShowAnalytica] = useState(false);
   const [useWebcam, setUseWebcam] = useState(false);
   const [showResultScreen, setShowResultScreen] = useState(false);
   const [pendingVideoFile, setPendingVideoFile] = useState(null);
   const [facingMode, setFacingMode] = useState("user");
+  const [isWebcamHovered, setIsWebcamHovered] = useState(false);
+  const [isAnalyticaHovered, setIsAnalyticaHovered] = useState(false);
 
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -42,11 +41,7 @@ export default function FootballTechnologies() {
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
-<<<<<<< HEAD
     trackClick('page-load-football-technologies-page', 'page-load', window.location.pathname); // Track page load
-
-=======
->>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
     if (!showAnalytica) return;
 
     const loadModels = async () => {
@@ -283,14 +278,29 @@ export default function FootballTechnologies() {
   };
 
   return (
-    <section style={{ padding: "20px" }}>
+    <section style={{ padding: "20px", textAlign: 'center' }}>
+      {onBackClick && (
+        <button
+          onClick={onBackClick}
+          style={{
+            position: "absolute",
+            top: "20px",
+            left: "80px",
+            padding: "10px 20px",
+            backgroundColor: "#ffffffcc",
+            border: "none",
+            borderRadius: "8px",
+            fontWeight: "bold",
+            cursor: "pointer",
+            zIndex: 10000,
+          }}
+        >
+          ← Back
+        </button>
+      )}
       <h2 className= "football"style={{ marginBottom: "12px" }}> FOOTBALL TECHNOLOGIES </h2>
 
-<<<<<<< HEAD
-      <button className="btn-view-technologies" onClick={(e) => { setShowTechnologies(true); trackClick('button-view-football-technologies', 'button', window.location.pathname); }} style={{ marginBottom: "10px" }}>
-=======
-      <button className="btn-view-technologies" onClick={() => setShowTechnologies(true)} style={{ marginBottom: "10px" }}>
->>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
+      <button className="btn-view-technologies" onClick={(e) => { setShowTechnologies(true); trackClick('button-view-football-technologies', 'button', window.location.pathname); }} style={{ marginBottom: "10px", backgroundColor: "#007bff", color: "white" }}>
         View Football Technologies
       </button>
 
@@ -312,15 +322,11 @@ export default function FootballTechnologies() {
           }}
         >
           <button
-<<<<<<< HEAD
             onClick={(e) => { setShowTechnologies(false); trackClick('button-football-technologies-back', 'button', window.location.pathname); }}
-=======
-            onClick={() => setShowTechnologies(false)}
->>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
             style={{
               position: "absolute",
               top: "20px",
-              left: "20px",
+              left: "80px",
               padding: "10px 20px",
               backgroundColor: "#ffffffcc",
               border: "none",
@@ -336,12 +342,18 @@ export default function FootballTechnologies() {
           <div>
             <button
               className={showAnalytica ? "btn-close-analytica" : "btn-open-analytica"}
-<<<<<<< HEAD
               onClick={(e) => { setShowAnalytica(prev => !prev); trackClick('button-football-analytica-toggle', 'button', window.location.pathname); }}
-=======
-              onClick={() => setShowAnalytica(prev => !prev)}
->>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
-              style={{ marginBottom: 10 }}
+              onMouseEnter={() => setIsAnalyticaHovered(true)}
+              onMouseLeave={() => setIsAnalyticaHovered(false)}
+              style={{
+                marginBottom: 10,
+                backgroundColor: isAnalyticaHovered ? '#007bff' : 'orange',
+                color: 'white',
+                border: 'none',
+                padding: '10px 20px',
+                borderRadius: '5px',
+                cursor: 'pointer'
+              }}
             >
               {showAnalytica ? "Close " : "Football Analytica"}
             </button>
@@ -361,12 +373,18 @@ export default function FootballTechnologies() {
 
                   <button
                     className="btn-use-webcam1"
-<<<<<<< HEAD
                     onClick={(e) => { handleWebcam(e); trackClick('button-football-analytica-use-webcam', 'button', window.location.pathname); }}
-=======
-                    onClick={handleWebcam}
->>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
-                    style={{ marginLeft: 10 }}
+                    onMouseEnter={() => setIsWebcamHovered(true)}
+                    onMouseLeave={() => setIsWebcamHovered(false)}
+                    style={{
+                      marginLeft: 10,
+                      backgroundColor: isWebcamHovered ? '#007bff' : 'orange',
+                      color: 'white',
+                      border: 'none',
+                      padding: '8px 15px',
+                      borderRadius: '5px',
+                      cursor: 'pointer'
+                    }}
                   >
                     Use Webcam
                   </button>
