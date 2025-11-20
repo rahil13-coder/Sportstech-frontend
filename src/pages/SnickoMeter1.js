@@ -1,5 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
+<<<<<<< HEAD
 import { trackClick } from '../utils/trackClick'; // Import trackClick
+=======
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
 
 const SnickoMeter1 = () => {
   const canvasRef = useRef(null);
@@ -20,8 +23,11 @@ const SnickoMeter1 = () => {
 
   // Keep mobile input focused so keyboard stays open
   useEffect(() => {
+<<<<<<< HEAD
     trackClick('page-load-snickometer1-page', 'page-load', window.location.pathname); // Track page load
 
+=======
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     const interval = setInterval(() => {
       if (isMobile && inputRef.current) {
@@ -232,7 +238,11 @@ const SnickoMeter1 = () => {
             ⏳ Retry in: {countdown}s
           </p>
           <button
+<<<<<<< HEAD
             onClick={(e) => { window.open("https://occasion.ltd/", "_blank"); trackClick('button-snickometer1-play-again', 'button', window.location.pathname); }}
+=======
+            onClick={() => window.open("https://occasion.ltd/", "_blank")}
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
             style={{
               padding: "10px 20px",
               margin: "10px",
@@ -255,9 +265,14 @@ const SnickoMeter1 = () => {
         !ballMoving &&
         !isOut && (
           <button
+<<<<<<< HEAD
             onClick={(e) => {
               window.dispatchEvent(new KeyboardEvent("keydown", { key: "0" }));
               trackClick('button-snickometer1-bowl-mobile', 'button', window.location.pathname);
+=======
+            onClick={() => {
+              window.dispatchEvent(new KeyboardEvent("keydown", { key: "0" }));
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
             }}
             style={{
               padding: "10px 20px",

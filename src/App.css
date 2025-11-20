@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Global Styles */
 body {
   margin: 0;
@@ -180,6 +181,12 @@ body {
 }
 
 /* Existing styles from App.css that were not directly related to the hero section */
+=======
+.App {
+  text-align: center;
+}
+
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -226,17 +233,124 @@ background-color: #282c34;
   }
 }
 
+<<<<<<< HEAD
+=======
+
+/* HomePage.css */
+/* App.css */
+
+
+.hero-title {
+  font-size: 3rem; /* large title */
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 800;
+  color: rgb(241, 209, 209); /* white text for dark backgrounds */
+  text-shadow: 2px 2px 8px rgb(91, 27, 160); /* stylish shadow */
+  letter-spacing: 2px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title1 {
+  font-size: 1rem; /* large title */
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #000000ea; /* white text for dark backgrounds */
+  text-shadow: 2px 2px 8px rgb(255, 252, 252); /* stylish shadow */
+  letter-spacing: 2px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
 .mb-5 {
   font-size: 2rem; /* large title */
   text-align: center;
   margin-bottom: 2rem;
+<<<<<<< HEAD
   font-weight: 800;
+=======
+  font-weight: 600;
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
   color: #ffae00; /* white text for dark backgrounds */
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* stylish shadow */
   letter-spacing: 2px;
   animation: fadeIn 2s ease-in-out;
 }
 
+<<<<<<< HEAD
+=======
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.custom-footer {
+    background-color: #1c1c1c;
+    color: #f5f5f5;
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 40px;
+    border-top: 3px solid #ffc107;
+    border-radius: 10px 10px 0 0;
+}
+
+.footer-text {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-link {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover {
+    transform: scale(1.15);
+}
+
+.social-icon {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+}
+
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
 .tennis{
   font-size: 2cqh;
   text-align: center;
@@ -1248,6 +1362,14 @@ background-color: #282c34;
 }
 
 /* General Layout */
+<<<<<<< HEAD
+=======
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
 
 /* Container Responsiveness */
 .snicker-stack-wrap {
@@ -1302,10 +1424,16 @@ background-color: #282c34;
   padding: 8px 12px;
   background-color: #28a745;
   color: white;
+<<<<<<< HEAD
   border: none;
   border-radius: 6px;
   font-size: 14px;
   font-weight: bold;
+=======
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
   cursor: pointer;
   white-space: nowrap;
 }
@@ -1582,7 +1710,10 @@ font-size: 28px;
 }
 
 
+<<<<<<< HEAD
 
 .right-qr-text {
   color: purple;
 }
+=======
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a

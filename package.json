@@ -21,10 +21,16 @@
     "jspdf": "^3.0.1",
     "mongoose": "^8.16.1",
     "multer": "^2.0.1",
+<<<<<<< HEAD
     "react": "^18.2.0",
     "react-apexcharts": "^1.7.0",
     "react-dom": "^18.2.0",
     "react-quill": "^2.0.0",
+=======
+    "react": "^19.1.0",
+    "react-apexcharts": "^1.7.0",
+    "react-dom": "^19.1.0",
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
     "react-router-dom": "^7.6.3",
     "react-scripts": "5.0.1",
     "recharts": "^3.0.2",
@@ -42,9 +48,15 @@
       "react-app/jest"
     ],
     "globals": {
+<<<<<<< HEAD
       "cv": "readonly"
     }
   },
+=======
+    "cv": "readonly"
+  }
+},
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
   "browserslist": {
     "production": [
       ">0.2%",

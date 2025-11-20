@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react"; // Added useEffect
 import { useNavigate } from "react-router-dom";
 import { trackClick } from '../utils/trackClick'; // Import trackClick
+=======
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
 
 const CricketTechnologies = ({ cricketTech }) => {
   const [show, setShow] = useState(false);
@@ -11,6 +16,7 @@ const CricketTechnologies = ({ cricketTech }) => {
 
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   useEffect(() => {
     trackClick('page-load-cricket-technologies-page', 'page-load', window.location.pathname); // Track page load
   }, []);
@@ -19,6 +25,11 @@ const CricketTechnologies = ({ cricketTech }) => {
     setActiveTab(label);
     setSelectedScore(null);
     trackClick(`button-cricket-tech-${label.toLowerCase().replace(/\s/g, '-')}`, 'button', window.location.pathname); // Track click
+=======
+  const handleButtonClick = async (label) => {
+    setActiveTab(label);
+    setSelectedScore(null);
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
 
     if (label === "Cricket News") {
       try {
@@ -80,7 +91,11 @@ const CricketTechnologies = ({ cricketTech }) => {
     return (
       <div className="fullscreen-section">
         <h3 className="LCN">Latest Cricket News</h3>
+<<<<<<< HEAD
         <button onClick={(e) => { setActiveTab(null); trackClick('button-cricket-news-back', 'button', window.location.pathname); }} className="back-button">⬅️ Back</button>
+=======
+        <button onClick={() => setActiveTab(null)} className="back-button">⬅️ Back</button>
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
         {news.length > 0 ? (
           news.map((article, index) => (
             <div key={index} className="news-article">
@@ -107,9 +122,15 @@ const CricketTechnologies = ({ cricketTech }) => {
       <div className="fullscreen-section">
         {!selectedScore ? (
           <>
+<<<<<<< HEAD
             <button className="cricket3-back-button" onClick={(e) => { navigate("/"); trackClick('button-cricket-technologies-back-to-home', 'button', window.location.pathname); }}>
         ⬅ Back
       </button>
+=======
+            <button onClick={() => setActiveTab(null)} className="cricket3-back-button">
+              ⬅ Back
+            </button>
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
             <h2 className="cricket3-title">🏏 Recent Cricket Scores</h2>
             {scores.length > 0 ? (
               <div className="cricket3-matches">
@@ -119,7 +140,11 @@ const CricketTechnologies = ({ cricketTech }) => {
                     <p className="cricket3-teams">{match.description}</p>
                     <button
                       className="score-link-button"
+<<<<<<< HEAD
                       onClick={(e) => { setSelectedScore(match); trackClick(`button-view-scorecard-${match.title}`, 'button', window.location.pathname); }}
+=======
+                      onClick={() => setSelectedScore(match)}
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
                       style={{
                         cursor: "pointer",
                         color: "#0288d1",
@@ -144,7 +169,11 @@ const CricketTechnologies = ({ cricketTech }) => {
           </>
         ) : (
           <>
+<<<<<<< HEAD
             <button onClick={(e) => { setSelectedScore(null); trackClick('button-scorecard-detail-back', 'button', window.location.pathname); }} className="cricket3-back-button">
+=======
+            <button onClick={() => setSelectedScore(null)} className="cricket3-back-button">
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
               ⬅ Back
             </button>
             <h2 className="cricket3-title">📋 Scorecard Detail</h2>
@@ -173,7 +202,11 @@ const CricketTechnologies = ({ cricketTech }) => {
   return (
     <section className="cricket">
       <h2>CRICKET TECHNOLOGIES</h2>
+<<<<<<< HEAD
       <button className="c1" onClick={(e) => { setShow(!show); trackClick('button-view-cricket-technologies', 'button', window.location.pathname); }}>
+=======
+      <button className="c1" onClick={() => setShow(!show)}>
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
         {show ? "Close" : "View Cricket Technologies"}
       </button>
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import axios from 'axios';
 import '../App.css';
@@ -8,6 +9,16 @@ import { trackClick } from '../utils/trackClick';
 import Contact from './contact';
 import JobPortal from './JobPortal'; // Import the JobPortal component
 // import Books from './Books'; // Removed direct import, now lazy loaded
+=======
+import React, { useState, useEffect, lazy, Suspense } from 'react'; // Add lazy and Suspense
+import axios from 'axios';
+import '../App.css';
+// import SnickoMeter from './SnickoMeter'; // Remove direct import
+// import SnickoMeter1 from './SnickoMeter1'; // Remove direct import
+// import CricketTechnologies from './CricketTechnologies'; // Remove direct import
+// import FootballTechnologies from './FootballTechnologies'; // Remove direct import
+// import TennisTechnologies from './TennisTechnologies'; // Remove direct import
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
 
 // Lazy load heavy components
 const SnickoMeter = lazy(() => import('./SnickoMeter'));
@@ -15,9 +26,12 @@ const SnickoMeter1 = lazy(() => import('./SnickoMeter1'));
 const CricketTechnologies = lazy(() => import('./CricketTechnologies'));
 const FootballTechnologies = lazy(() => import('./FootballTechnologies'));
 const TennisTechnologies = lazy(() => import('./TennisTechnologies'));
+<<<<<<< HEAD
 const Blogs = lazy(() => import('./Blogs'));
 const Books = lazy(() => import('./Books')); // Lazy load the Books component
 const Games = lazy(() => import('./Games')); // Lazy load the Games component
+=======
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
 
 
 function HomePage() {
@@ -30,6 +44,7 @@ function HomePage() {
     const [hawkEyeError, setHawkEyeError] = useState('');
     const [decisionData, setDecisionData] = useState(null);
     const [snickoActive, setSnickoActive] = useState(false);
+<<<<<<< HEAD
     const [ballTrackingActive, setBallTrackingActive] = useState(false);
     const [showHome, setShowHome] = useState(false);
     const [showAdmin, setShowAdmin] = useState(false);
@@ -39,13 +54,19 @@ function HomePage() {
     const [showSmartStadiumExperience, setShowSmartStadiumExperience] = useState(false); // New state for Smart Stadium Experience
     const [showContact, setShowContact] = useState(false); // New state for Contact page
     const [showJobs, setShowJobs] = useState(false); // New state for Job Portal page
+=======
+    const [ballTrackingActive, setBallTrackingActive] = useState(false); // ✅ new state
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
 
 
     const baseURL = process.env.REACT_APP_API_BASE_URL;
 
 
     useEffect(() => {
+<<<<<<< HEAD
         trackClick('page-load-homepage', 'page-load', window.location.pathname);
+=======
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
         const fetchTechnologies = async () => {
             try {
                 const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/technologies`);
@@ -116,7 +137,11 @@ function HomePage() {
     };
 
 
+<<<<<<< HEAD
     const handleDownloadJSON = (e) => {
+=======
+    const handleDownloadJSON = () => {
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
         if (!decisionData) return;
         const blob = new Blob([JSON.stringify(decisionData, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
@@ -124,6 +149,7 @@ function HomePage() {
         link.href = url;
         link.download = 'hawk_eye_analysis.json';
         link.click();
+<<<<<<< HEAD
         trackClick('button-download-json', 'button', window.location.pathname);
     };
 
@@ -199,11 +225,14 @@ function HomePage() {
         setShowGames(false);
         setShowContact(false);
         trackClick('button-toggle-jobs', 'button', window.location.pathname);
+=======
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
     };
 
 
     return (
         <div className="container mt-5 homepage-background">
+<<<<<<< HEAD
             <Menu toggleHome={toggleHome} toggleAdmin={toggleAdmin} toggleBlogs={toggleBlogs} toggleBooks={toggleBooks} toggleGames={toggleGames} toggleContact={toggleContact} toggleJobs={toggleJobs} /> {/* Pass toggleJobs */}
             {showHome && (
                 <div style={{
@@ -361,6 +390,17 @@ function HomePage() {
             <section className="hero-title">
                 <h2>Cricket Informatica</h2>
                 <button className="btn btn-warning mb-1" onClick={(e) => { setHawkEyeActive(!hawkEyeActive); trackClick('button-cricket-analytics', 'button', window.location.pathname); }}>
+=======
+            
+            <h1 className="hero-title">Sports Technology Explorer</h1>
+            <h6 className="hero-title1">Before using- LET THE MODEL TO LOAD FIRST</h6>
+            <h6 className="hero-title1">Works Excellent on Desktop WEBCAM</h6>
+            
+
+            <section className="hero-title">
+                <h2>Cricket Informatica</h2>
+                <button className="btn btn-warning mb-3" onClick={() => setHawkEyeActive(!hawkEyeActive)}>
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
                     {hawkEyeActive ? "Close Cricket Analytics" : "Cricket Analytics"}
                 </button>
 
@@ -406,13 +446,22 @@ function HomePage() {
             </section>
             
             {/* Technology Sections */}
+<<<<<<< HEAD
             <section className="mb-3">
                 <h1 style={{ color: 'white' }}>Cricket Video Analytics</h1>
+=======
+            <section className="mb-5">
+                <h2>Cricket Video Analytics</h2>
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
 
 
                 <button
                     className="btn btn-primary mb-3 me-2"
+<<<<<<< HEAD
                     onClick={(e) => { setSnickoActive(!snickoActive); trackClick('button-cricket-video-analyzer', 'button', window.location.pathname); }}
+=======
+                    onClick={() => setSnickoActive(!snickoActive)}
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
                 >
                     {snickoActive ? "Close Cricket Video Analyzer" : "Cricket Video Analyzer"}
                 </button>
@@ -569,7 +618,10 @@ function HomePage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="social-link"
+<<<<<<< HEAD
                         onClick={(e) => trackClick('link-youtube', 'other', window.location.pathname)}
+=======
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
                     >
                         <img
                             src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
@@ -582,7 +634,10 @@ function HomePage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="social-link"
+<<<<<<< HEAD
                         onClick={(e) => trackClick('link-facebook', 'other', window.location.pathname)}
+=======
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
                     >
                         <img
                             src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
@@ -595,4 +650,8 @@ function HomePage() {
         </div>
     );
 }
+<<<<<<< HEAD
 export default HomePage;
+=======
+export default HomePage;
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a

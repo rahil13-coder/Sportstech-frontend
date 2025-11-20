@@ -13,7 +13,7 @@ const countries = [
   "Serbia", "Bulgaria", "Albania", "Bosnia and Herzegovina", "North Macedonia", "Moldova", "Belarus", "Georgia", "Armenia", "Azerbaijan"
 ];
 
-const JobPortal = ({ onBackClick }) => {
+const JobPortal = ({ isAdmin, onBackClick }) => {
   const [userType, setUserType] = useState(null); // 'seeker' or 'employer'
   const [selectedCountry, setSelectedCountry] = useState('');
   const [jobListings, setJobListings] = useState([]);
@@ -26,11 +26,60 @@ const JobPortal = ({ onBackClick }) => {
   const [jobDescription, setJobDescription] = useState('');
   const [requirements, setRequirements] = useState('');
   const [applicationLink, setApplicationLink] = useState('');
+  const [latestJobs, setLatestJobs] = useState([]);
+  const [upworkJobs, setUpworkJobs] = useState([]);
 
   useEffect(() => {
     const storedJobs = JSON.parse(localStorage.getItem('jobListings')) || [];
     setJobListings(storedJobs);
   }, []);
+
+  const fetchLatestJobs = async () => {
+    // Call your backend endpoint
+    const url = `${process.env.REACT_APP_API_BASE_URL}/api/jobs-search`;
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: 'developer jobs', // Example query, you might want to make this dynamic
+        page: 1,
+        num_pages: 5,
+        country: 'us',
+        date_posted: 'all',
+      }),
+    };
+
+    try {
+      const response = await fetch(url, options);
+      const result = await response.json();
+      setLatestJobs(result.data || []);
+    } catch (error) {
+      console.error("Error fetching latest jobs from backend:", error);
+    }
+  };
+
+  const fetchUpworkJobs = async () => {
+    // Call your backend endpoint
+    const url = `${process.env.REACT_APP_API_BASE_URL}/api/us-rental`;
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({"limit":200,"offset":0,"postal_code":"90004","status":["for_sale","ready_to_build"],"sort":{"direction":"desc","field":"list_date"}})
+    };
+
+    try {
+      const response = await fetch(url, options);
+      const result = await response.json();
+      console.log("US Rental API Response from backend:", result);
+      setUpworkJobs(result.data.home_search.results || []); // Extract the array of properties
+    } catch (error) {
+      console.error("Error fetching US Rental data from backend:", error);
+    }
+  };
 
   const handlePostJob = (e) => {
     e.preventDefault();
@@ -62,6 +111,13 @@ const JobPortal = ({ onBackClick }) => {
     setJobDescription('');
     setRequirements('');
     setApplicationLink('');
+  };
+
+  const handleDeleteJob = (id) => {
+    const updatedJobListings = jobListings.filter(job => job.id !== id);
+    localStorage.setItem('jobListings', JSON.stringify(updatedJobListings));
+    setJobListings(updatedJobListings);
+    setMessage('Job deleted successfully!');
   };
 
   const filteredJobs = jobListings.filter(job =>
@@ -103,6 +159,76 @@ const JobPortal = ({ onBackClick }) => {
         </div>
       )}
 
+      <div style={{ marginBottom: '20px' }}>
+          <button onClick={fetchLatestJobs} style={{ backgroundColor: 'orange', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer', margin: '10px' }}>
+            Latest Jobs
+          </button>
+          <button onClick={fetchUpworkJobs} style={{ backgroundColor: 'purple', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer', margin: '10px' }}>
+            US Rental
+          </button>
+        </div>
+
+      
+
+        {latestJobs.length > 0 && (
+        <div style={{ textAlign: 'left', marginTop: '20px' }}>
+          <h3>Latest Jobs</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+            {latestJobs.map((job, index) => (
+              <div key={index} style={{ border: '1px solid #555', borderRadius: '8px', padding: '15px', backgroundColor: '#222' }}>
+                <h4 style={{ color: 'skyblue', marginBottom: '5px' }}>{job.job_title}</h4>
+                <p><strong>Company:</strong> {job.employer_name}</p>
+                <p><strong>Location:</strong> {job.job_city}, {job.job_state}, {job.job_country}</p>
+                <p><strong>Posted:</strong> {job.job_posted_at_datetime_utc}</p>
+                <p>{job.job_description ? job.job_description.substring(0, 150) : ''}...</p>
+                <a href={job.job_apply_link} target="_blank" rel="noopener noreferrer" style={{ color: 'lightblue', textDecoration: 'none' }}>Apply Now</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {upworkJobs.length > 0 && (
+        <div style={{ textAlign: 'left', marginTop: '20px' }}>
+          <h3>US Rental Data</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+            {upworkJobs.map((property, index) => (
+              <div key={property.property_id || index} style={{ border: '1px solid #555', borderRadius: '8px', padding: '15px', backgroundColor: '#222' }}>
+                <h4 style={{ color: 'skyblue', marginBottom: '5px' }}>
+                  {property.location && property.location.address && property.location.address.line && property.location.address.city
+                    ? `${property.location.address.line}, ${property.location.address.city}`
+                    : 'Address Not Available'}
+                </h4>
+                <p><strong>Status:</strong> {property.status}</p>
+                {property.location && property.location.address && property.location.address.postal_code && (
+                  <p><strong>Postal Code:</strong> {property.location.address.postal_code}</p>
+                )}
+                <p><strong>Photos:</strong> {property.photo_count}</p>
+                {property.branding && property.branding.length > 0 && (
+                  <p><strong>Broker:</strong> {property.branding[0].name}</p>
+                )}
+                {property.property_id && (
+                  <a
+                    href={`https://www.realty.com/property/${property.property_id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: 'lightblue', textDecoration: 'none', display: 'block', marginTop: '10px' }}
+                  >
+                    View Details
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      
+
+      
+
+      
+
       {userType === 'employer' && selectedCountry && (
         <div style={{ textAlign: 'left', border: '1px solid #555', padding: '20px', borderRadius: '8px' }}>
           <h3>Post a New Job in {selectedCountry}</h3>
@@ -141,6 +267,10 @@ const JobPortal = ({ onBackClick }) => {
         </div>
       )}
 
+      
+
+      
+
       {userType === 'seeker' && selectedCountry && (
         <div style={{ textAlign: 'left' }}>
           <h3>Jobs in {selectedCountry}</h3>
@@ -156,6 +286,11 @@ const JobPortal = ({ onBackClick }) => {
                   <p><strong>Posted:</strong> {job.postedDate}</p>
                   <p>{job.description.substring(0, 150)}...</p>
                   <a href={job.applicationLink} target="_blank" rel="noopener noreferrer" style={{ color: 'lightblue', textDecoration: 'none' }}>Apply Now</a>
+                  {isAdmin && (
+                    <button onClick={() => handleDeleteJob(job.id)} style={{ backgroundColor: 'red', color: 'white', padding: '5px 10px', border: 'none', borderRadius: '5px', cursor: 'pointer', marginTop: '10px' }}>
+                      Delete
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
@@ -167,7 +302,7 @@ const JobPortal = ({ onBackClick }) => {
       )}
 
       <button type="button" onClick={onBackClick} style={{ backgroundColor: 'red', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer', marginTop: '30px', width: '100%' }}>
-        Back to Contact Page
+        Back
       </button>
 
       <footer className="custom-footer">

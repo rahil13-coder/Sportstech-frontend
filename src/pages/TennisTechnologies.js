@@ -1,5 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
+<<<<<<< HEAD
 import { trackClick } from '../utils/trackClick'; // Import trackClick
+=======
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
 
 
 // Utility to wait for global JS libraries (like tf, poseDetection)
@@ -22,7 +25,11 @@ const COLORS = {
   skeleton: "cyan",
 };
 
+<<<<<<< HEAD
 export default function TennisTechnologies() {
+=======
+export default function FootballTechnologies() {
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
   const [showTechnologies, setShowTechnologies] = useState(false);
   const [showAnalytica, setShowAnalytica] = useState(false);
   const [useWebcam, setUseWebcam] = useState(false);
@@ -40,8 +47,11 @@ export default function TennisTechnologies() {
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
+<<<<<<< HEAD
     trackClick('page-load-tennis-technologies-page', 'page-load', window.location.pathname); // Track page load
 
+=======
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
     if (!showAnalytica) return;
 
     const loadModels = async () => {
@@ -264,7 +274,11 @@ export default function TennisTechnologies() {
     <section style={{ padding: "1px" }}>
       <h2 className="tennis"  > TENNIS TECHNOLOGIES </h2>
 
+<<<<<<< HEAD
       <button className="btn-view-technologies" onClick={(e) => { setShowTechnologies(true); trackClick('button-view-tennis-technologies', 'button', window.location.pathname); }} style={{ marginBottom: 10 }}>
+=======
+      <button className="btn-view-technologies" onClick={() => setShowTechnologies(true)} style={{ marginBottom: 10 }}>
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
         View Tennis Technologies
       </button>
 
@@ -286,7 +300,11 @@ export default function TennisTechnologies() {
           }}
         >
           <button
+<<<<<<< HEAD
             onClick={(e) => { setShowTechnologies(false); trackClick('button-tennis-technologies-back', 'button', window.location.pathname); }}
+=======
+            onClick={() => setShowTechnologies(false)}
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
             style={{
               position: "absolute",
               top: "20px",
@@ -305,7 +323,11 @@ export default function TennisTechnologies() {
 
           <div>
             <button  className={showAnalytica ? "btn-close-analytica" : "btn-open-analytica"}
+<<<<<<< HEAD
             onClick={(e) => { setShowAnalytica(prev => !prev); trackClick('button-tennis-analytica-toggle', 'button', window.location.pathname); }} style={{ marginBottom: 10 }}>
+=======
+            onClick={() => setShowAnalytica(prev => !prev)} style={{ marginBottom: 10 }}>
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
               {showAnalytica ? "Close" : "Tennis Analytica"}
             </button>
 
@@ -325,7 +347,11 @@ export default function TennisTechnologies() {
 
   <button
     className="btn-use-webcam1"
+<<<<<<< HEAD
     onClick={(e) => { handleWebcam(e); trackClick('button-tennis-analytica-use-webcam', 'button', window.location.pathname); }}
+=======
+    onClick={handleWebcam}
+>>>>>>> a270c23625903cc97df5a0528e5475350f7c492a
     style={{ marginLeft: 10 }}
   >
     Use Webcam

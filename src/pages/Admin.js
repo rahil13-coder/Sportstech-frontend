@@ -4,6 +4,7 @@ import './Home.css'; // Admin.js will use the same CSS as Home.js
 import Blogs from './Blogs'; // Import the Blogs component
 import { trackClick } from '../utils/trackClick'; // Import trackClick
 import Contact from './contact'; // Import the Contact component
+import JobPortal from './JobPortal'; // Import the JobPortal component
 
 const Books = lazy(() => import('./Books')); // Lazy load the Books component
 
@@ -20,6 +21,7 @@ const Admin = ({ onBackClick }) => {
   const [showTraffic, setShowTraffic] = useState(false); // New state for Traffic section
   const [showBooksSection, setShowBooksSection] = useState(false); // New state for Books section
   const [showContactForm, setShowContactForm] = useState(false); // New state for Contact form visibility
+  const [showJobPortal, setShowJobPortal] = useState(false); // New state for Job Portal visibility
   const [trafficStats, setTrafficStats] = useState(null); // State for traffic statistics
   const [blogs, setBlogs] = useState([]); // New state for blogs
 
@@ -117,6 +119,7 @@ const Admin = ({ onBackClick }) => {
     setShowTraffic(false);
     setShowBooksSection(false);
     setShowContactForm(false);
+    setShowJobPortal(false);
     trackClick('button-toggle-sports-content', 'button', window.location.pathname);
   };
 
@@ -127,6 +130,7 @@ const Admin = ({ onBackClick }) => {
     setShowTraffic(false);
     setShowBooksSection(false);
     setShowContactForm(false);
+    setShowJobPortal(false);
     trackClick('button-toggle-blogs-admin', 'button', window.location.pathname);
   };
 
@@ -137,6 +141,7 @@ const Admin = ({ onBackClick }) => {
     setShowTraffic(false); // Hide traffic when showing create blog
     setShowBooksSection(false);
     setShowContactForm(false);
+    setShowJobPortal(false);
     trackClick('button-toggle-create-blog', 'button', window.location.pathname);
   };
 
@@ -147,6 +152,7 @@ const Admin = ({ onBackClick }) => {
     setShowCreateBlog(false); // Hide other sections
     setShowBooksSection(false);
     setShowContactForm(false);
+    setShowJobPortal(false);
     trackClick('button-toggle-traffic', 'button', window.location.pathname);
   };
 
@@ -157,6 +163,7 @@ const Admin = ({ onBackClick }) => {
     setShowCreateBlog(false);
     setShowTraffic(false);
     setShowContactForm(false);
+    setShowJobPortal(false);
     trackClick('button-toggle-manage-books', 'button', window.location.pathname);
   };
 
@@ -167,7 +174,19 @@ const Admin = ({ onBackClick }) => {
     setShowCreateBlog(false);
     setShowTraffic(false);
     setShowBooksSection(false);
+    setShowJobPortal(false);
     trackClick('button-toggle-contact-form', 'button', window.location.pathname);
+  };
+
+  const handleShowJobPortal = () => {
+    setShowJobPortal(!showJobPortal);
+    setShowSportsContent(false);
+    setShowBlogs(false);
+    setShowCreateBlog(false);
+    setShowTraffic(false);
+    setShowBooksSection(false);
+    setShowContactForm(false);
+    trackClick('button-toggle-job-portal', 'button', window.location.pathname);
   };
 
   const handleDeleteBlog = (blogId) => {
@@ -245,6 +264,10 @@ const Admin = ({ onBackClick }) => {
 
       <button onClick={handleShowContact} style={{ backgroundColor: 'darkblue', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer', margin: '20px auto', display: 'block' }}>
         {showContactForm ? 'Hide Contact Form' : 'Manage Contacts'}
+      </button>
+
+      <button onClick={handleShowJobPortal} style={{ backgroundColor: 'darkgreen', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer', margin: '20px auto', display: 'block' }}>
+        {showJobPortal ? 'Hide Job Portal' : 'Manage Jobs'}
       </button>
 
       {showSportsContent && (
@@ -558,6 +581,12 @@ const Admin = ({ onBackClick }) => {
       {showContactForm && (
         <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '20px', borderRadius: '8px', maxWidth: '900px', margin: '50px auto', textAlign: 'center', color: 'white' }}>
           <Contact isAdminMode={true} onBackClick={handleShowContact} />
+        </div>
+      )}
+
+      {showJobPortal && (
+        <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '20px', borderRadius: '8px', maxWidth: '900px', margin: '50px auto', textAlign: 'center', color: 'white' }}>
+          <JobPortal isAdmin={true} onBackClick={handleShowJobPortal} />
         </div>
       )}
     </>
