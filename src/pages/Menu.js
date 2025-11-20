@@ -20,6 +20,7 @@ const Menu = () => {
       <Link to="/books" className="menu-link" onClick={handleMenuClick('navbar-books', null)}>Books</Link>
       <Link to="/contact" className="menu-link" onClick={handleMenuClick('navbar-contact', null)}>Contact</Link>
       <Link to="/jobs" className="menu-link" onClick={handleMenuClick('navbar-jobs', null)}>Jobs</Link>
+      <Link to="/cricket" className="menu-link" onClick={handleMenuClick('navbar-cricket', null)}>Cricket</Link>
       
       <Link to="/football" className="menu-link" onClick={handleMenuClick('navbar-football', null)}>Football</Link>
       <Link to="/tennis" className="menu-link" onClick={handleMenuClick('navbar-tennis', null)}>Tennis</Link>
