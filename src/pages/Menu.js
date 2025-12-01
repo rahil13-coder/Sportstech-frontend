@@ -3,7 +3,7 @@ import './Menu.css'; // Import the CSS file
 import { trackClick } from '../utils/trackClick'; // Import trackClick
 import { Link } from 'react-router-dom'; // Import Link
 
-const Menu = () => {
+const Menu = ({ toggleHome }) => { // Accept toggleHome prop
 
   const handleMenuClick = (elementId, originalOnClick) => (e) => {
     if (originalOnClick) {
@@ -14,7 +14,7 @@ const Menu = () => {
 
   return (
     <div className="menu-container" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
-      <Link to="/" className="menu-link" onClick={handleMenuClick('navbar-home', null)}>Home</Link>
+      <Link to="/" className="menu-link" onClick={handleMenuClick('navbar-home', toggleHome)}>Home</Link>
       <Link to="/admin" className="menu-link" onClick={handleMenuClick('navbar-admin', null)}>Admin</Link>
       <Link to="/blogs" className="menu-link" onClick={handleMenuClick('navbar-blogs', null)}>Blogs</Link>
       <Link to="/books" className="menu-link" onClick={handleMenuClick('navbar-books', null)}>Books</Link>
@@ -27,10 +27,11 @@ const Menu = () => {
       <Link to="/basketball" className="menu-link" onClick={handleMenuClick('navbar-basketball', null)}>Basketball</Link>
       <Link to="/games" className="menu-link" onClick={handleMenuClick('navbar-games', null)}>Games</Link>
       <Link to="/rental" className="menu-link" onClick={handleMenuClick('navbar-rental', null)}>Rental</Link>
-      <Link to="/movies" className="menu-link" onClick={handleMenuClick('navbar-movies', null)}>Movies</Link>
+      <Link to="/movies" className="menu-link" onClick={handleMenuClick('navbar-movies', null)}>Wrestling</Link>
       <Link to="/meme-generator" className="menu-link" onClick={handleMenuClick('navbar-meme-generator', null)}>Meme Generator</Link>
     </div>
   );
 };
 
 export default Menu;
+
