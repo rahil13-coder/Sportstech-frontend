@@ -20,35 +20,35 @@ const MemeGenerator = () => {
     const templates = {
         trending: [
             { url: 'https://i.imgflip.com/1bij.jpg', name: 'Drake', icon: '🎤' },
-            { url: 'https://i.imgflip.com/265l.jpg', name: 'Distracted', icon: '👀' },
+            { url: '/Screenshot 2025-12-06 010300.png', name: 'Distracted', icon: '👀' },
             { url: 'https://i.imgflip.com/4t0m5.jpg', name: 'Woman Yelling', icon: '😤' },
             { url: 'https://i.imgflip.com/2hgfw.jpg', name: 'Brain Expand', icon: '🧠' },
-            { url: 'https://i.imgflip.com/43s6f2.jpg', name: "Gru's Plan", icon: '📋' },
-            { url: 'https://i.imgflip.com/7la82g.jpg', name: 'Bernie', icon: '🙏' }
+            { url: 'Screenshot 2025-12-06 010828.png', name: "Italian brainrot", icon: '📋' },
+            { url: 'Screenshot 2025-12-06 011156.png', name: 'Chickawagga', icon: '🙏' }
         ],
         classic: [
             { url: 'https://i.imgflip.com/26jxvk.jpg', name: 'Success Kid', icon: '👶' },
             { url: 'https://i.imgflip.com/gk5el.jpg', name: 'Tom Cruise', icon: '😂' },
-            { url: 'https://i.imgflip.com/3balcv.jpg', name: 'Bad Luck', icon: '😭' },
-            { url: 'https://i.imgflip.com/5kr5y.jpg', name: 'One Does Not', icon: '🧙' },
-            { url: 'https://i.imgflip.com/3xz5f1.jpg', name: 'Harold', icon: '😶' },
-            { url: 'https://i.imgflip.com/5573ym.jpg', name: 'Grumpy Cat', icon: '😾' }
+            { url: 'Screenshot 2025-12-06 012451.png', name: 'Bad Luck', icon: '😭' },
+            { url: 'Screenshot 2025-12-06 013146.png', name: 'One Does Not', icon: '🧙' },
+            { url: 'Screenshot 2025-12-06 013428.png', name: 'Harold', icon: '😶' },
+            { url: 'Screenshot 2025-12-06 013826.png', name: 'Grumpy Cat', icon: '😾' }
         ],
         comparison: [
-            { url: 'https://i.imgflip.com/2wobuo.jpg', name: 'Drake Comp', icon: '✌️' },
-            { url: 'https://i.imgflip.com/3qn77w.jpg', name: 'Doge Cheems', icon: '🐕' },
-            { url: 'https://i.imgflip.com/430sgs.jpg', name: 'Virgin vs Chad', icon: '⚔️' },
-            { url: 'https://i.imgflip.com/7la82g.jpg', name: 'Always Has Been', icon: '🔫' },
+            { url: 'Screenshot 2025-12-06 015020.png', name: 'Listening Age', icon: '✌️' },
+            { url: 'Screenshot 2025-12-06 014627.png', name: 'Doge Cheems', icon: '🐕' },
+            { url: 'Screenshot 2025-12-06 014020.png', name: 'Virgin vs Chad', icon: '⚔️' },
+            { url: 'Screenshot 2025-12-06 015155.png', name: 'Always Has Been', icon: '🔫' },
             { url: 'https://i.imgflip.com/1ur9b0.jpg', name: 'Left Exit', icon: '🛣️' },
-            { url: 'https://i.imgflip.com/2zah21.jpg', name: 'UNO', icon: '🎴' }
+            { url: 'Screenshot 2025-12-06 015529.png', name: 'UNO', icon: '🎴' }
         ],
         reaction: [
-            { url: 'https://i.imgflip.com/2r1afz.jpg', name: 'Monkey', icon: '🐵' },
-            { url: 'https://i.imgflip.com/2xzy6x.jpg', name: 'Blinking', icon: '😐' },
-            { url: 'https://i.imgflip.com/1z715.jpg', name: 'Is This', icon: '🦋' },
-            { url: 'https://i.imgflip.com/6snxqc.jpg', name: 'This Is Fine', icon: '🔥' },
-            { url: 'https://i.imgflip.com/2r1afz.jpg', name: 'Shocked', icon: '😲' },
-            { url: 'https://i.imgflip.com/1z715.jpg', name: 'Pikachu', icon: '⚡' }
+            { url: 'Screenshot 2025-12-06 015840.png', name: 'Monkey', icon: '🐵' },
+            { url: 'Screenshot 2025-12-06 015948.png', name: 'Blinking', icon: '😐' },
+            { url: 'Screenshot 2025-12-06 020209.png', name: 'Is This', icon: '🦋' },
+            { url: 'Screenshot 2025-12-06 020413.png', name: 'This Is Fine', icon: '🔥' },
+            { url: 'Screenshot 2025-12-06 020520.png', name: 'Shocked', icon: '😲' },
+            { url: 'Screenshot 2025-12-06 020642.png', name: 'Pikachu', icon: '⚡' }
         ]
     };
 
